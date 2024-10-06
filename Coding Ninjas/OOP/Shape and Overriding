@@ -1,0 +1,89 @@
+Problem:
+
+Problem statement
+Create a Class Shape having a field shapeType and a function printMyType.
+
+Create another class, Square and Rectangle, which inherits the Shape class and has additional fields length and breadth. Both Square and Rectangle classes will have two functions calculateArea, which will return the object's area, and printMyType, which will print the type of the object.
+
+Inside the main, first create the object of class Square and have a length equal to 5 and call the printMyType then calculateArea method after creating the object of class Rectangle having the length equal to 5 and breadth equal to 4 and again call the printMyType and calculateArea method.
+
+Sample Output 1 :
+square
+25
+rectangle
+20
+Explanation of Sample output 1:
+Firstly we are creating the object of class Square with mentioned length 5 and calling the functions printMyType which output square and then calculateArea which returns 25 and hence printed. Similarly, it is done for the Rectangle class.
+
+
+Solution:
+
+#include <bits/stdc++.h> 
+#include<iostream>
+
+using namespace std;
+
+// Create the classes here
+class Shape{
+    protected:
+    string shapeType;
+
+    public:
+      Shape(string type) : shapeType(type) {}
+
+      void printMyType() {
+          cout<< shapeType <<endl;
+      }
+};
+
+class Square: public Shape{
+     private:
+     int length;
+
+     public:
+
+     Square(int len) : Shape("square"), length(len) {}
+
+     int calculateArea() {
+         return length * length;
+     }
+
+     void printMyType() {
+         Shape::printMyType();
+     }
+};
+
+// Derived class Rectangle
+class Rectangle : public Shape {
+private:
+    int length, breadth;
+
+public:
+    // Constructor to initialize length, breadth, and shapeType
+    Rectangle(int len, int brd) : Shape("rectangle"), length(len), breadth(brd) {}
+
+    // Function to calculate the area of the rectangle
+    int calculateArea() {
+        return length * breadth;
+    }
+
+    // Overriding the printMyType function
+    void printMyType() {
+        Shape::printMyType();
+    }
+};
+
+// Main function
+int main() {
+    // Creating an object of class Square
+    Square square(5);
+    square.printMyType();            // Output: square
+    cout << square.calculateArea() << endl;  // Output: 25
+
+    // Creating an object of class Rectangle
+    Rectangle rectangle(5, 4);
+    rectangle.printMyType();         // Output: rectangle
+    cout << rectangle.calculateArea() << endl; // Output: 20
+
+    return 0;
+}
