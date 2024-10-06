@@ -1,0 +1,108 @@
+Problem:
+
+Problem statement
+Design a class Car having parameterized constructor that takes two arguments as an input i.e noOfGear and color and a printCarInfo method that prints the CarInfo i.e noOfGear and color.
+
+Design another class RaceCar having parameterized constructor has an additional attribute maxSpeed and printRaceCarInfo method that prints the RaceCarInfo i.e noOfGear, color and maxSpeed.
+
+Note: You have to create an object of class RaceCar and call the printRaceCarInfo method.
+
+Detailed explanation ( Input/output format, Notes, Images )
+Sample Input 1:
+5
+red
+1000
+Sample Output 1:
+noOfGear: 5
+color: red
+maxSpeed: 1000
+Explanation of Sample output 1:
+When we call the printInfo function, all the info related to the car will be printed the same as the above format.
+
+
+
+
+Solution:
+
+
+#include <bits/stdc++.h> 
+
+#include <iostream>
+
+using namespace std;
+
+ 
+
+class Car {
+
+    int noOfGear;
+
+    string color;
+
+    public:
+
+    Car(int ng, string c){
+
+      noOfGear= ng;
+
+      color = c;
+
+    };
+
+    void printCarInfo(){
+
+        cout<<"noOfGear: "<<noOfGear<<endl<<"color: "<<color<<endl;
+
+    }
+
+ 
+
+    // Write your constructor and printCarInfo method here.
+
+};
+
+ 
+
+class RaceCar: public Car {
+
+    int maxSpeed;
+
+    public:
+
+    RaceCar(int ng,string c,int mS): Car(ng, c){
+
+     maxSpeed= mS;
+
+    };
+
+    void printRaceCarInfo(){
+
+        printCarInfo();
+
+ 
+
+        cout<<"maxSpeed: "<<maxSpeed;
+
+    };
+
+ 
+
+};
+
+ 
+
+int main() {
+
+    int noOfGear, maxSpeed;
+
+    string color;
+
+    cin >> noOfGear >> color >> maxSpeed;
+
+    RaceCar raceCar(noOfGear, color, maxSpeed);
+
+    raceCar.printRaceCarInfo();
+
+    return 0;
+
+}
